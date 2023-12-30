@@ -1,29 +1,26 @@
 import random
-
 word_list = ["aardvark", "baboon", "camel"]
 chosen_word = random.choice(word_list)
-
+word_length = len(chosen_word)
 
 print(f'Pssst, the solution is {chosen_word}.')
 
 display = []
+for _ in range(word_length):
+    display += "_"
 
-for i in chosen_word:
-    display.append("_")
+end_of_game = False
+while not end_of_game:
+    guess = input("Guess a letter: ").lower()
 
-print(display)
-guess = input("Guess a letter: ").lower()
+    for position in range(word_length):
+        letter = chosen_word[position]
+        print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
+        if letter == guess:
+            display[position] = letter
 
-for i in range(len(chosen_word)):
-    if chosen_word[i] == guess:
-        display[i] = chosen_word[i]
-    else:
-        display[i] = "_"
+    print(display)
 
-for letter in chosen_word:
-    if letter == guess:
-        print("Right")
-    else:
-        print("Wrong")
-
-print(display)
+    if "_" not in display:
+        end_of_game = True
+        print("You Win")
