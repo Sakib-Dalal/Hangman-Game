@@ -4,7 +4,7 @@ import random
 word_list = ["aardvark", "baboon", "camel"]
 chose = random.choice(word_list)
 
-guess = input("Guess a letter: ")
+guess = input("Guess a letter: ").lower()
 
 for i in range(len(chose)):
     if guess == chose[i]:
